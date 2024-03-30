@@ -1,18 +1,47 @@
 # Patients API Documentation
 ## Overview
-This API provides endpoints to manage patient data and each patient's clinical records. The API serves as the backend code for the Patient Management mobile application. Developed using Node.js with MongoDB for the database, the development team is able to integrate this API on the front-end using React Native and Flutter. 
+The Patients API is a backend service developed to manage patient data and clinical records for the Patient Management mobile application. Built using Node.js for the backend logic and MongoDB as the database, this API seamlessly integrates with the front-end, which is developed using React Native.
+### Technologies
+- Backend: Node.js
+- Database: MongoDB
+- Front-end: React Native
+### Target Audience
+This documentation is intended for developers involved in building or maintaining the Patient Management mobile application.
+
 ### Project Repositories
 - [Node.js API](https://github.com/adrnmrk/MAPD_712_713_Patient_Management/tree/b2b58b727e2e340c7cebe57720468df652738896/MAPD-713-Group_Project)
 - [React Native Patient Management App](https://github.com/adrnmrk/react-patient-project.git)
 
 ### Base URL
-- **Base URL**: `http://127.0.0.1:3000`
+- **iOS Base URL**: `http://127.0.0.1:3000`
+- **Android Base URL**: `http://10.0.2.2:3000`
 
-### Endpoints
+## Endpoints
+### Get all patients
+`GET http://127.0.0.1:3000/patients`
 
-#### GET /patients
-- **Description**: Get all patients in the system.
-- **Response**: Returns a list of all patients.
+**Description**: This endpoint makes an HTTP GET request to retrieve a list of patients. 
+
+**Response**: Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
+
+**Request Example**:
+
+    curl --location --request GET 'http://127.0.0.1:3000/patients
+
+**Response Example**:
+
+    [
+    {
+        "_id": "65f382d7076a0b12026fdb6b",
+      "firstName": "Sam",
+      "lastName": "Rihan",
+      "dateOfBirth": "1999-01-12T00:00:00.000Z",
+      "age": 25,
+      "gender": "Female",
+      ...
+      },
+      ...
+      ]
 
 #### GET /patients/:id
 - **Description**: Get a single patient by their patient ID.
