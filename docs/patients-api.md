@@ -1,8 +1,9 @@
 # Patients API Documentation
 ## Overview
-This API serves as the backend code for the Patient Management mobile application. Developed using Node.js with MongoDB for the database, the development team is able to integrate this API on the front-end using React Native and Flutter. The API provides endpoints to manage patient data and each patient's clinical records. 
+This API provides endpoints to manage patient data and each patient's clinical records. The API serves as the backend code for the Patient Management mobile application. Developed using Node.js with MongoDB for the database, the development team is able to integrate this API on the front-end using React Native and Flutter. 
 ### Project Repositories
 - [Node.js API](https://github.com/adrnmrk/MAPD_712_713_Patient_Management/tree/b2b58b727e2e340c7cebe57720468df652738896/MAPD-713-Group_Project)
+- [React Native Patient Management App](https://github.com/adrnmrk/react-patient-project.git)
 
 ### Base URL
 - **Base URL**: `http://127.0.0.1:3000`
