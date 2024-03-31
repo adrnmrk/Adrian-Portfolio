@@ -1,5 +1,3 @@
-# Portfolio
-
 This portfolio is a collection of technical writing samples, coding projects, and automated testing projects.
 
 ### GitHub public repo
