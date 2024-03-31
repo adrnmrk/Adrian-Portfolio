@@ -189,10 +189,10 @@ This endpoint makes an HTTP GET request to retrieve details of a patient based o
 The response includes various attributes of the patient such as first name, last name, date of birth, contact information, critical status, and so on.
 
 #### **Parameters**
-| Name      | In   | Required | Description | 
+
+| Name      | In   | Required | Description |
 | ---       | ---  | ------   |  ---         |
 | patientId | path | Yes     | Unique ID to use for this patient |
-
 
 #### **Request Example**
 
@@ -247,6 +247,12 @@ This endpoint makes an HTTP PUT request that allows you to update a patient's de
 #### **Response**
 
 The response will be a JSON array containing the updated patient information, including the unique identifier (_id) and timestamps (createdAt, updatedAt). For more information about the parameters, refer to the [Create new patients section](#create-new-patients).
+
+#### **Parameters**
+
+| Name      | In   | Required | Description |
+| ---       | ---  | ------   |  ---         |
+| patientId | path | Yes     | Unique ID to use for this patient |
 
 #### **Request Example**
 
