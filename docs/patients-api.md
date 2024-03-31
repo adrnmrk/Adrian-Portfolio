@@ -33,7 +33,7 @@ Returns a list of all patients. The response will be a JSON array containing pat
 
 #### **Request Example**
 
-    curl --location --request GET 'http://127.0.0.1:3000/patients
+    curl --location 'http://127.0.0.1:3000/patients
 
 #### **Response Example**
 
@@ -70,30 +70,110 @@ This endpoint makes an HTTP POST request that allows you create a new patient by
 
 Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
 
+| Name                        | Type   | Required | Description                                         |
+|-----------------------------|--------|----------|-----------------------------------------------------|
+| firstName                   | string | required | The first name of the patient.                      |
+| lastName                    | string | required | The last name of the patient.                       |
+| dateOfBirth                 | string | required | The date of birth of the patient.                   |
+| age                         | number | required | The age of the patient.                             |
+| gender                      | string | required | The gender of the patient.                          |
+| height                      | number | required | The height of the patient (cm).                          |
+| weight                      | number | required | The weight of the patient (kg).                          |
+| address                     | string | required | The address of the patient.                         |
+| city                        | string | required | The city of the patient.                            |
+| province                    | string | required | The province of the patient.                        |
+| postalCode                  | string | required | The postal code of the patient.                     |
+| contactNumber               | string | required | The contact number of the patient.                  |
+| email                       | string | required | The email address of the patient.                   |
+| identification              | string | required | The identification of the patient.                  |
+| identificationType          | string | required | The type of identification of the patient.          |
+| purposeOfVisit              | string | required | The purpose of the patient's visit.                 |
+| primaryCarePhysician        | string | required | The primary care physician of the patient.          |
+| physicianContactNumber      | string | required | The contact number of the primary care physician.   |
+| listOfAllergies             | string | required | The list of allergies the patient has.              |
+| currentMedications          | string | required | The current medications of the patient.             |
+| medicalConditions           | string | required | The medical conditions of the patient.              |
+| insuranceProvider           | string | required | The insurance provider of the patient.              |
+| insuranceIdNumber           | string | required | The insurance ID number of the patient.             |
+| insuranceContactNumber      | string | required | The contact number of the insurance provider.       |
+| emergencyContactPerson      | string | required | The name of the emergency contact person.           |
+| emergencyContactNumber      | string | required | The contact number of the emergency contact person. |
+
 #### **Request Example**
 
-    curl --location --request GET 'http://127.0.0.1:3000/patients
+    curl --location 'http://127.0.0.1:3000/patients' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-09-09",
+    "age": 34,
+    "gender": "Male",
+    "height": 180,
+    "weight": 80,
+    "address": "Address for Patient",
+    "city": "Toronto",
+    "province": "Ontario",
+    "postalCode": "M1Q 1V3",
+    "contactNumber": "1234567890",
+    "email": "123@dfas.ca",
+    "identification": "Health card",
+    "identificationType": "HealthCard",
+    "purposeOfVisit": "Asthma",
+    "primaryCarePhysician": "Some Doctor",
+    "physicianContactNumber": "1234567890",
+    "listOfAllergies": "Bees",
+    "currentMedications": "Ibuprofen",
+    "medicalConditions": "Diabetes",
+    "insuranceProvider": "Sun Life",
+    "insuranceIdNumber": "098765432d1",
+    "insuranceContactNumber": "0987654321",
+    "emergencyContactPerson": "Emely Amby",
+    "emergencyContactNumber": "1111111111"
+    }'
 
 #### **Response Example**
 
-    [
-      {
-        "_id": "65f382d7076a0b12026fdb6b",
-        "firstName": "Sam",
-        "lastName": "Rihan",
-        "dateOfBirth": "1999-01-12T00:00:00.000Z",
-        "age": 25,
-        "gender": "Female",
-        ...
-      }
-    ]
+    '{
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "1990-09-09",
+      "age": 34,
+      "gender": "Male",
+      "height": 180,
+      "weight": 80,
+      "address": "Address for Patient",
+      "city": "Toronto",
+      "province": "Ontario",
+      "postalCode": "M1Q 1V3",
+      "contactNumber": "1234567890",
+      "email": "123@dfas.ca",
+      "identification": "Health card",
+      "identificationType": "HealthCard",
+      "purposeOfVisit": "Asthma",
+      "primaryCarePhysician": "Some Doctor",
+      "physicianContactNumber": "1234567890",
+      "listOfAllergies": "Bees",
+      "currentMedications": "Ibuprofen",
+      "medicalConditions": "Diabetes",
+      "insuranceProvider": "Sun Life",
+      "insuranceIdNumber": "098765432d1",
+      "insuranceContactNumber": "0987654321",
+      "emergencyContactPerson": "Emely Amby",
+      "emergencyContactNumber": "1111111111"
+      }'
+
 ### GET patient by patientId
 
 `GET http://127.0.0.1:3000/patients/{patientId}`
 
-#### **Description**: This endpoint makes an HTTP GET request to retrieve details of a patient based on the provided patientId. 
+#### **Description**
 
-#### **Response**: The response includes various attributes of the patient such as first name, last name, date of birth, contact information, critical status, and so on.
+This endpoint makes an HTTP GET request to retrieve details of a patient based on the provided patientId.
+
+#### **Response**
+
+The response includes various attributes of the patient such as first name, last name, date of birth, contact information, critical status, and so on.
 
 #### **Parameters**
 | Name      | In   | Required | Description | 
@@ -103,7 +183,7 @@ Returns a list of all patients. The response will be a JSON array containing pat
 
 #### **Request Example**
 
-    curl --location --request GET 'http://127.0.0.1:3000/patients/65f4b15d732c8d4f8e3cd7ab'
+    curl --location 'http://127.0.0.1:3000/patients/{patientId}'
 
 #### **Response Example**
 
@@ -163,7 +243,7 @@ The response is a JSON array and includes clinical data such as such as systolic
 
 #### **Request Example**
 
-    curl --location --request GET 'http://127.0.0.1:3000/patients/{patientId}/clinicaldata'
+    curl --location 'http://127.0.0.1:3000/patients/{patientId}/clinicaldata'
 
 #### **Response Example**
 
