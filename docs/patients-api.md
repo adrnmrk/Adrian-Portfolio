@@ -331,7 +331,8 @@ This endpoint makes an HTTP DELETE request to delete a specific patient record.
 The response includes the ID of the deleted patient record, along with other attributes of the patient such as first name, last name, date of birth, contact information, and so on. It also includes the attribute **updatedAt**, which is the timestamp of when the record was last updated.
 
 #### **Parameters**
-| Name      | In   | Required | Description | 
+
+| Name      | In   | Required | Description |
 | ---       | ---  | ------   |  ---         |
 | patientId | path | Yes     | Unique ID to use for this patient |
 
