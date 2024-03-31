@@ -20,7 +20,7 @@ This documentation is intended for developers involved in building or maintainin
 
 ## Endpoints
 
-### Show all patients
+### GET all patients
 
 `GET http://127.0.0.1:3000/patients`
 
@@ -71,34 +71,36 @@ This endpoint makes an HTTP POST request that allows you to create a new patient
 
 Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
 
-| Name                        | Type   | Required | Description                                         |
-|-----------------------------|--------|----------|-----------------------------------------------------|
-| firstName                   | string | required | The first name of the patient.                      |
-| lastName                    | string | required | The last name of the patient.                       |
-| dateOfBirth                 | string | required | The date of birth of the patient.                   |
-| age                         | number | required | The age of the patient.                             |
-| gender                      | string | required | The gender of the patient.                          |
-| height                      | number | required | The height of the patient (cm).                          |
-| weight                      | number | required | The weight of the patient (kg).                          |
-| address                     | string | required | The address of the patient.                         |
-| city                        | string | required | The city of the patient.                            |
-| province                    | string | required | The province of the patient.                        |
-| postalCode                  | string | required | The postal code of the patient.                     |
-| contactNumber               | string | required | The contact number of the patient.                  |
-| email                       | string | required | The email address of the patient.                   |
-| identification              | string | required | The identification of the patient.                  |
-| identificationType          | string | required | The type of identification of the patient.          |
-| purposeOfVisit              | string | required | The purpose of the patient's visit.                 |
-| primaryCarePhysician        | string | required | The primary care physician of the patient.          |
-| physicianContactNumber      | string | required | The contact number of the primary care physician.   |
-| listOfAllergies             | string | required | The list of allergies the patient has.              |
-| currentMedications          | string | required | The current medications of the patient.             |
-| medicalConditions           | string | required | The medical conditions of the patient.              |
-| insuranceProvider           | string | required | The insurance provider of the patient.              |
-| insuranceIdNumber           | string | required | The insurance ID number of the patient.             |
-| insuranceContactNumber      | string | required | The contact number of the insurance provider.       |
-| emergencyContactPerson      | string | required | The name of the emergency contact person.           |
-| emergencyContactNumber      | string | required | The contact number of the emergency contact person. |
+#### **Parameters**
+
+| Name                        | In   | Required | Description                                         |
+|-----------------------------|--------|----------|---------------------------------------------------|
+| firstName                   | body | required | The first name of the patient.                      |
+| lastName                    | body | required | The last name of the patient.                       |
+| dateOfBirth                 | body | required | The date of birth of the patient.                   |
+| age                         | body | required | The age of the patient.                             |
+| gender                      | body | required | The gender of the patient.                          |
+| height                      | body | required | The height of the patient (cm).                     |
+| weight                      | body | required | The weight of the patient (kg).                     |
+| address                     | body | required | The address of the patient.                         |
+| city                        | body | required | The city of the patient.                            |
+| province                    | body | required | The province of the patient.                        |
+| postalCode                  | body | required | The postal code of the patient.                     |
+| contactNumber               | body | required | The contact number of the patient.                  |
+| email                       | body | required | The email address of the patient.                   |
+| identification              | body | required | The identification of the patient.                  |
+| identificationType          | body | required | The type of identification of the patient.          |
+| purposeOfVisit              | body | required | The purpose of the patient's visit.                 |
+| primaryCarePhysician        | body | required | The primary care physician of the patient.          |
+| physicianContactNumber      | body | required | The contact number of the primary care physician.   |
+| listOfAllergies             | body | required | The list of allergies the patient has.              |
+| currentMedications          | body | required | The current medications of the patient.             |
+| medicalConditions           | body | required | The medical conditions of the patient.              |
+| insuranceProvider           | body | required | The insurance provider of the patient.              |
+| insuranceIdNumber           | body | required | The insurance ID number of the patient.             |
+| insuranceContactNumber      | body | required | The contact number of the insurance provider.       |
+| emergencyContactPerson      | body | required | The name of the emergency contact person.           |
+| emergencyContactNumber      | body | required | The contact number of the emergency contact person. |
 
 #### **Request Example**
 
@@ -164,7 +166,7 @@ Returns a list of all patients. The response will be a JSON array containing pat
       "emergencyContactNumber": "1111111111"
       }'
 
-### Search patient by patientId
+### GET patient by patientId
 
 `GET http://127.0.0.1:3000/patients/{patientId}`
 
@@ -234,7 +236,7 @@ This endpoint makes an HTTP PUT request that allows you to update a patient's de
 
 #### **Response**
 
-The response will be a JSON array containing the updated patient information, including the unique identifier (_id) and timestamps (createdAt, updatedAt). For more information about the JSON attributes, refer to the [Create new patients section](#create-new-patients).
+The response will be a JSON array containing the updated patient information, including the unique identifier (_id) and timestamps (createdAt, updatedAt). For more information about the parameters, refer to the [Create new patients section](#create-new-patients).
 
 #### **Request Example**
 
@@ -300,7 +302,7 @@ The response will be a JSON array containing the updated patient information, in
       "emergencyContactNumber": "1111111111"
       }'
 
-### Remove patient by patientId
+### DELETE patient record
 
 `DELETE http://127.0.0.1:3000/patients/{patientId}`
 
@@ -385,7 +387,8 @@ The response includes the ID of the deleted patient record, along with other att
       "__v": 0
       }
 
-### GET patient clinical data by patientId
+### GET clinical data by patientId
+
 `GET http://127.0.0.1:3000/patients/{patientId}/clinicaldata`
 
 #### **Description**
@@ -422,56 +425,119 @@ The response is a JSON array and includes clinical data such as such as systolic
         "createdAt": "2024-03-30T19:39:35.930Z",
         "updatedAt": "2024-03-30T19:39:35.930Z",
         "__v": 0
-        
       }      
     ]
 
-##### NOTE: The attribute *is_critical_condition* is a boolean that automatically updates based on the latest clinical data. If any of the vital signs are above or below the normal levels, *is_critical_condition* is set to **TRUE**.
+### Create new clinical data for a patient
 
-### GET /patients/:id
-- **Description**: Get a single patient by their patient ID.
-- **Parameters**:
-  - `id`: The unique ID of the patient.
-- **Response**: Returns the patient data if found, otherwise returns a 404 error.
+`POST http://127.0.0.1:3000/patients/{patientId}/clinicaldata`
 
-#### POST /patients
-- **Description**: Create a new patient in the system.
-- **Request Body**: JSON object containing patient information.
-- **Response**: Returns the created patient data with a status code of 201.
+#### **Description**
 
-#### PUT /patients/:id
-- **Description**: Update user details with the given ID.
-- **Parameters**:
-  - `id`: The unique ID of the patient.
-- **Request Body**: JSON object containing the updated patient information.
-- **Response**: Returns the updated patient data if successful, otherwise returns a 404 error.
+This endpoint makes an HTTP POST request to add clinical data of a patient based on the provided patientId.
 
-#### DELETE /patients/:id
-- **Description**: Delete a patient with the given ID along with their associated clinical data.
-- **Parameters**:
-  - `id`: The unique ID of the patient.
-- **Response**: Returns the deleted patient data if successful, otherwise returns a 404 error.
+#### **Response**
 
-#### POST /patients/:id/clinicaldata
-- **Description**: Add clinical data for a specific patient and update the critical condition status.
-- **Parameters**:
-  - `id`: The unique ID of the patient.
-- **Request Body**: JSON object containing clinical data.
-- **Response**: Returns the created clinical data with a status code of 201.
+The response is a JSON array and includes clinical data such as such as systolic and diastolic blood pressure, respiratory rate, blood oxygen level, pulse rate, patient ID, critical condition status.
 
-#### GET /patients/:id/clinicaldata
-- **Description**: Retrieve all clinical data for a specific patient.
-- **Parameters**:
-  - `id`: The unique ID of the patient.
-- **Response**: Returns a list of clinical data associated with the patient.
+#### **Parameters**
 
-#### DELETE /patients/:id/clinicaldata/:clinicalDataId
-- **Description**: Delete specific clinical data for a patient by ID.
-- **Parameters**:
-  - `id`: The unique ID of the patient.
-  - `clinicalDataId`: The unique ID of the clinical data to delete.
-- **Response**: Returns a success message if the clinical data is deleted successfully, otherwise returns a 404 error.
+| Name      | In   | Required | Description | 
+| ---       | ---  | ------   |  ---         |
+| patientId | path | Yes     | Unique ID to use for this patient |
+| bp_systolic       | body  | Yes      | The systolic blood pressure of the patient.|
+| bp_diastolic      | body  | Yes      | The diastolic blood pressure of the patient.|
+| respiratory_rate  | body  | Yes      | The respiratory rate of the patient.      |
+| blood_oxygen_level| body  | Yes      | The blood oxygen level of the patient.    |
+| pulse_rate        | body  | Yes      | The pulse rate of the patient.            |
 
-#### GET /patients/critical
-- **Description**: Retrieve patients in critical condition based on their latest clinical data.
-- **Response**: Returns a list of patients in critical condition.
+#### **Request Example**
+
+    curl --location 'http://127.0.0.1:3000/patients/660984c8fede11c231c93739/clinicaldata' \
+      --header 'Content-Type: application/json' \
+      --data
+        '{
+          "bp_systolic": 120,
+          "bp_diastolic": 90,
+          "respiratory_rate": 20,
+          "blood_oxygen_level": 96,
+          "pulse_rate": 85
+        }'
+
+#### **Response Example**
+
+    {
+        "_id": "6609d3cffede11c231c9374a",
+        "bp_systolic": 120,
+        "bp_diastolic": 90,
+        "respiratory_rate": 20,
+        "blood_oxygen_level": 96,
+        "pulse_rate": 85,
+        "patientId": "660984c8fede11c231c93739",
+        "is_critical_condition": false,
+        "createdAt": "2024-03-31T21:21:19.508Z",
+        "updatedAt": "2024-03-31T21:21:19.508Z",
+        "__v": 0
+    }
+
+##### NOTE: The *is_critical_condition* attribute is a boolean that automatically updates based on the latest clinical data. If any of the patient's vital signs is outside the normal range, *is_critical_condition* is set to **TRUE**.
+
+### GET all critical patients
+
+`GET http://127.0.0.1:3000/patients`
+
+#### **Description**
+
+This endpoint makes an HTTP GET request to retrieve a list of patients in critical condition.
+
+The *is_critical_condition* attribute is a boolean that automatically updates based on the latest clinical data. If any of the patient's vital sign is outside the normal range, *is_critical_condition* is set to **TRUE**. If a patient's *is_critical_condition* is TRUE, their record is included in the response.
+
+#### **Response**
+
+Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
+
+#### **Request Example**
+
+`curl --location 'http://127.0.0.1:3000/patients/critical'`
+
+#### **Response Example**
+
+    [
+    {
+        "_id": "660758f602f8073d1a9f3e54",
+        "firstName": "Sam",
+        "lastName": "Smith",
+        "dateOfBirth": "1993-08-01T04:00:00.000Z",
+        "age": 30,
+        "gender": "Male",
+        "height": 189,
+        "weight": 89,
+        "address": null,
+        "city": null,
+        "province": "ON",
+        "postalCode": "L5b 2Z1",
+        "contactNumber": "8923455",
+        ...
+        "is_patient_critical": true
+    },
+    {
+        "_id": "65f4ca0a732c8d4f8e3cd7fa",
+        "firstName": "a",
+        "lastName": "a",
+        "dateOfBirth": "2000-01-01T00:00:00.000Z",
+        "age": 24,
+        "gender": "Male",
+        "height": 170,
+        "weight": 80,
+        "address": null,
+        "city": null,
+        "province": "ON",
+        "postalCode": "m1m1m1",
+        "contactNumber": "555",
+        ...
+        "is_patient_critical": true,
+        "createdAt": "2024-03-15T22:22:02.465Z",
+        "updatedAt": "2024-03-15T22:22:13.180Z",
+        "__v": 0
+    }
+]
