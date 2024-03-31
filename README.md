@@ -4,7 +4,7 @@ This portfolio is a collection of technical writing samples, coding projects, an
 
 ### GitHub public repo
 
-https://github.com/adrnmrk
+[https://github.com/adrnmrk](https://github.com/adrnmrk)
 
 ## API Documentation
 
