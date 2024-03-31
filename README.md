@@ -18,7 +18,7 @@ Built using Node.js for the backend logic and MongoDB as the database, this API 
 
 ### Creating Customer Sentiment Analysis in Node RED (WIP)
 
-(WIP) A guide that explains how to implement customer sentiment analysis using Node RED. This guide covers the integration of a sentiment analysis algorithm within Node RED to assign scores and analyze written feedback from customers, categorizing it as positive, neutral, or negative.
+A guide that explains how to implement customer sentiment analysis using Node RED. This guide covers the integration of a sentiment analysis algorithm within Node RED to assign scores and analyze written feedback from customers, categorizing it as positive, neutral, or negative.
 
 This resource is important for organizations aiming to analyze and understand their customers' sentiments.
 
