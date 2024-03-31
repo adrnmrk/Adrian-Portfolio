@@ -1,15 +1,21 @@
 # Patients API Documentation
+
 ## Overview
+
 The Patients API is a backend service developed to manage patient data and clinical records for the Patient Management mobile application. Built using Node.js for the backend logic and MongoDB as the database, this API seamlessly integrates with the front-end, which is developed using React Native.
+
 ### Technologies
+
 - Backend: Node.js
 - Database: MongoDB
 - Front-end: React Native
 
 ### Target Audience
+
 This documentation is intended for developers involved in building or maintaining the Patient Management mobile application.
 
 ### Project Repositories
+
 - [Node.js API](https://github.com/adrnmrk/MAPD_712_713_Patient_Management/tree/b2b58b727e2e340c7cebe57720468df652738896/MAPD-713-Group_Project)
 - [React Native Patient Management App](https://github.com/adrnmrk/react-patient-project.git)
 
@@ -17,6 +23,10 @@ This documentation is intended for developers involved in building or maintainin
 
 - **iOS Base URL**: `http://127.0.0.1:3000`
 - **Android Base URL**: `http://10.0.2.2:3000`
+
+## Use Case Diagram
+
+![alt text](../resources/patient_use_case.png)
 
 ## Endpoints
 
