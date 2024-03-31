@@ -5,7 +5,7 @@ The Patients API is a backend service developed to manage patient data and clini
 - Backend: Node.js
 - Database: MongoDB
 - Front-end: React Native
- 
+
 ### Target Audience
 This documentation is intended for developers involved in building or maintaining the Patient Management mobile application.
 
@@ -20,7 +20,8 @@ This documentation is intended for developers involved in building or maintainin
 
 ## Endpoints
 
-### GET all patients
+### Show all patients
+
 `GET http://127.0.0.1:3000/patients`
 
 #### **Description**
@@ -58,13 +59,13 @@ Returns a list of all patients. The response will be a JSON array containing pat
       },
     ]
 
-### POST new patients
+### Create new patients
 
 `POST http://127.0.0.1:3000/patients`
 
 #### **Description**
 
-This endpoint makes an HTTP POST request that allows you create a new patient by providing the necessary details.
+This endpoint makes an HTTP POST request that allows you to create a new patient by providing the necessary details.
 
 #### **Response**
 
@@ -163,7 +164,7 @@ Returns a list of all patients. The response will be a JSON array containing pat
       "emergencyContactNumber": "1111111111"
       }'
 
-### GET patient by patientId
+### Search patient by patientId
 
 `GET http://127.0.0.1:3000/patients/{patientId}`
 
@@ -222,6 +223,167 @@ The response includes various attributes of the patient such as first name, last
         "__v": 0
       }      
     ]
+
+### Update patient details
+
+`PUT http://127.0.0.1:3000/patients/{patientId}`
+
+#### **Description**
+
+This endpoint makes an HTTP PUT request that allows you to update a patient's details.
+
+#### **Response**
+
+The response will be a JSON array containing the updated patient information, including the unique identifier (_id) and timestamps (createdAt, updatedAt). For more information about the JSON attributes, refer to the [Create new patients section](#create-new-patients).
+
+#### **Request Example**
+
+    curl --location --request PUT 'http://127.0.0.1:3000/patients/660984c8fede11c231c93739' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-10-10",
+    "age": 33,
+    "gender": "Male",
+    "height": 172,
+    "weight": 80,
+    "address": "XYZ main street",
+    "city": "Toronto",
+    "province": "Ontario",
+    "postalCode": "M1Q 1V3",
+    "contactNumber": "1234567890",
+    "email": "123@dfas.ca",
+    "identification": "HEalth card",
+    "identificationType": "HealthCard",
+    "purposeOfVisit": "Asthma",
+    "primaryCarePhysician": "Dr. House",
+    "physicianContactNumber": "1234567890",
+    "listOfAllergies": "Bees",
+    "currentMedications": "Ibuprofen",
+    "medicalConditions": "Diabetes",
+    "insuranceProvider": "Sun Life",
+    "insuranceIdNumber": "098765432d1",
+    "insuranceContactNumber": "0987654321",
+    "emergencyContactPerson": "Emely Amby",
+    "emergencyContactNumber": "1111111111"
+}'
+
+#### **Response Example**
+
+    '{
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "1990-09-09",
+      "age": 33,
+      "gender": "Male",
+      "height": 172,
+      "weight": 80,
+      "address": "XYZ main street",
+      "city": "Toronto",
+      "province": "Ontario",
+      "postalCode": "M1Q 1V3",
+      "contactNumber": "1234567890",
+      "email": "123@dfas.ca",
+      "identification": "Health card",
+      "identificationType": "HealthCard",
+      "purposeOfVisit": "Asthma",
+      "primaryCarePhysician": "Dr. House",
+      "physicianContactNumber": "1234567890",
+      "listOfAllergies": "Bees",
+      "currentMedications": "Ibuprofen",
+      "medicalConditions": "Diabetes",
+      "insuranceProvider": "Sun Life",
+      "insuranceIdNumber": "098765432d1",
+      "insuranceContactNumber": "0987654321",
+      "emergencyContactPerson": "Emely Amby",
+      "emergencyContactNumber": "1111111111"
+      }'
+
+### Remove patient by patientId
+
+`DELETE http://127.0.0.1:3000/patients/{patientId}`
+
+#### **Description**
+
+This endpoint makes an HTTP DELETE request to delete a specific patient record.
+
+#### **Response**
+
+The response includes the ID of the deleted patient record, along with other attributes of the patient such as first name, last name, date of birth, contact information, and so on. It also includes the attribute **updatedAt**, which is the timestamp of when the record was last updated.
+
+#### **Parameters**
+| Name      | In   | Required | Description | 
+| ---       | ---  | ------   |  ---         |
+| patientId | path | Yes     | Unique ID to use for this patient |
+
+#### **Request Example**
+
+    curl --location --request DELETE 'http://127.0.0.1:3000/patients/{patientId}' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "firstName": "John",
+        "lastName": "Doe",
+        "dateOfBirth": "2023-09-09",
+        "age": 34,
+        "gender": "Female",
+        "height": 145,
+        "weight": 45,
+        "address": "Address for PAtient",
+        "city": "Toronto",
+        "province": "Ontario",
+        "postalCode": "M1Q 1V3",
+        "contactNumber": "1234567890",
+        "email": "123@dfas.ca",
+        "identification": "HEalth card",
+        "identificationType": "HealthCard",
+        "purposeOfVisit": "Asthma",
+        "primaryCarePhysician": "Some Doctor",
+        "physicianContactNumber": "1234567890",
+        "listOfAllergies": "Bees",
+        "currentMedications": "Ibuprofen",
+        "medicalConditions": "Diabetes",
+        "insuranceProvider": "Sun Life",
+        "insuranceIdNumber": "098765432d1",
+        "insuranceContactNumber": "0987654321",
+        "emergencyContactPerson": "Emely Amby",
+        "emergencyContactNumber": "1111111111"
+        }'
+
+#### **Response Example**
+
+    {
+      "_id": "6609cf25fede11c231c93741",
+      "firstName": "Jane",
+      "lastName": "Doer",
+      "dateOfBirth": "2023-09-09T00:00:00.000Z",
+      "age": 34,
+      "gender": "Female",
+      "height": 145,
+      "weight": 45,
+      "address": "Address for PAtient",
+      "city": "Toronto",
+      "province": "Ontario",
+      "postalCode": "M1Q 1V3",
+     "contactNumber": "1234567890",
+      "email": "123@dfas.ca",
+      "identification": "HEalth card",
+      "identificationType": "HealthCard",
+      "purposeOfVisit": "Asthma",
+      "primaryCarePhysician": "Some Doctor",
+      "physicianContactNumber": "1234567890",
+      "listOfAllergies": "Bees",
+      "currentMedications": "Ibuprofen",
+      "medicalConditions": "Diabetes",
+      "insuranceProvider": "Sun Life",
+      "insuranceIdNumber": "098765432d1",
+      "insuranceContactNumber": "0987654321",
+      "emergencyContactPerson": "Emely Amby",
+      "emergencyContactNumber": "1111111111",
+      "createdAt": "2024-03-31T21:01:25.853Z",
+      "updatedAt": "2024-03-31T21:01:25.853Z",
+      "__v": 0
+      }
 
 ### GET patient clinical data by patientId
 `GET http://127.0.0.1:3000/patients/{patientId}/clinicaldata`

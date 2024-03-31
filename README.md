@@ -2,6 +2,10 @@
 
 This portfolio is a collection of technical writing samples, coding projects, and automated testing projects.
 
+### GitHub public repo
+
+https://github.com/adrnmrk
+
 ## API Documentation
 
 ### [Patients API](/docs/patients-api.md)
