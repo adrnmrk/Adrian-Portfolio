@@ -102,6 +102,7 @@ This endpoint makes an HTTP POST request that allows you to create a new patient
 #### **Response**
 
 Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
+
 <!-- omit from toc -->
 #### **Parameters**
 
@@ -133,6 +134,7 @@ Returns a list of all patients. The response will be a JSON array containing pat
 | insuranceContactNumber      | body | required | The contact number of the insurance provider.       |
 | emergencyContactPerson      | body | required | The name of the emergency contact person.           |
 | emergencyContactNumber      | body | required | The contact number of the emergency contact person. |
+
 <!-- omit from toc -->
 #### **Request Example**
 
@@ -166,6 +168,7 @@ Returns a list of all patients. The response will be a JSON array containing pat
     "emergencyContactPerson": "Emely Amby",
     "emergencyContactNumber": "1111111111"
     }'
+
 <!-- omit from toc -->
 #### **Response Example**
 
@@ -201,24 +204,29 @@ Returns a list of all patients. The response will be a JSON array containing pat
 ### GET patient by patientId
 
 `GET http://127.0.0.1:3000/patients/{patientId}`
+
 <!-- omit from toc -->
 #### **Description**
 
 This endpoint makes an HTTP GET request to retrieve details of a patient based on the provided patientId.
+
 <!-- omit from toc -->
 #### **Response**
 
 The response includes various attributes of the patient such as first name, last name, date of birth, contact information, critical status, and so on.
+
 <!-- omit from toc -->
 #### **Parameters**
 
 | Name      | In   | Required | Description |
 | ---       | ---  | ------   |  ---         |
 | patientId | path | Yes     | Unique ID to use for this patient |
+
 <!-- omit from toc -->
 #### **Request Example**
 
     curl --location 'http://127.0.0.1:3000/patients/{patientId}'
+
 <!-- omit from toc -->
 #### **Response Example**
 
@@ -261,20 +269,24 @@ The response includes various attributes of the patient such as first name, last
 ### Update patient details
 
 `PUT http://127.0.0.1:3000/patients/{patientId}`
+
 <!-- omit from toc -->
 #### **Description**
 
 This endpoint makes an HTTP PUT request that allows you to update a patient's details.
+
 <!-- omit from toc -->
 #### **Response**
 
 The response will be a JSON array containing the updated patient information, including the unique identifier (_id) and timestamps (createdAt, updatedAt). For more information about the parameters, refer to the [Create new patients section](#create-new-patients).
+
 <!-- omit from toc -->
 #### **Parameters**
 
 | Name      | In   | Required | Description |
 | ---       | ---  | ------   |  ---         |
 | patientId | path | Yes     | Unique ID to use for this patient |
+
 <!-- omit from toc -->
 #### **Request Example**
 
@@ -308,6 +320,7 @@ The response will be a JSON array containing the updated patient information, in
     "emergencyContactPerson": "Emely Amby",
     "emergencyContactNumber": "1111111111"
 }'
+
 <!-- omit from toc -->
 #### **Response Example**
 
@@ -343,20 +356,24 @@ The response will be a JSON array containing the updated patient information, in
 ### DELETE patient record
 
 `DELETE http://127.0.0.1:3000/patients/{patientId}`
+
 <!-- omit from toc -->
 #### **Description**
 
 This endpoint makes an HTTP DELETE request to delete a specific patient record.
+
 <!-- omit from toc -->
 #### **Response**
 
 The response includes the ID of the deleted patient record, along with other attributes of the patient such as first name, last name, date of birth, contact information, and so on. It also includes the attribute **updatedAt**, which is the timestamp of when the record was last updated.
+
 <!-- omit from toc -->
 #### **Parameters**
 
 | Name      | In   | Required | Description |
 | ---       | ---  | ------   |  ---         |
 | patientId | path | Yes     | Unique ID to use for this patient |
+
 <!-- omit from toc -->
 #### **Request Example**
 
@@ -390,6 +407,7 @@ The response includes the ID of the deleted patient record, along with other att
         "emergencyContactPerson": "Emely Amby",
         "emergencyContactNumber": "1111111111"
         }'
+
 <!-- omit from toc -->
 #### **Response Example**
 
@@ -429,14 +447,17 @@ The response includes the ID of the deleted patient record, along with other att
 ### GET clinical data by patientId
 
 `GET http://127.0.0.1:3000/patients/{patientId}/clinicaldata`
+
 <!-- omit from toc -->
 #### **Description**
 
 This endpoint makes an HTTP GET request to retrieve clinical data of a patient based on the provided patientId.
+
 <!-- omit from toc -->
 #### **Response**
 
 The response is a JSON array and includes clinical data such as such as systolic and diastolic blood pressure, respiratory rate, blood oxygen level, pulse rate, patient ID, critical condition status.
+
 <!-- omit from toc -->
 #### **Parameters**
 
@@ -448,6 +469,7 @@ The response is a JSON array and includes clinical data such as such as systolic
 #### **Request Example**
 
     curl --location 'http://127.0.0.1:3000/patients/{patientId}/clinicaldata'
+
 <!-- omit from toc -->
 #### **Response Example**
 
@@ -470,14 +492,17 @@ The response is a JSON array and includes clinical data such as such as systolic
 ### Create new clinical data for a patient
 
 `POST http://127.0.0.1:3000/patients/{patientId}/clinicaldata`
+
 <!-- omit from toc -->
 #### **Description**
 
 This endpoint makes an HTTP POST request to add clinical data of a patient based on the provided patientId.
+
 <!-- omit from toc -->
 #### **Response**
 
 The response is a JSON array and includes clinical data such as such as systolic and diastolic blood pressure, respiratory rate, blood oxygen level, pulse rate, patient ID, critical condition status.
+
 <!-- omit from toc -->
 #### **Parameters**
 
@@ -489,6 +514,7 @@ The response is a JSON array and includes clinical data such as such as systolic
 | respiratory_rate  | body  | Yes      | The respiratory rate of the patient.      |
 | blood_oxygen_level| body  | Yes      | The blood oxygen level of the patient.    |
 | pulse_rate        | body  | Yes      | The pulse rate of the patient.            |
+
 <!-- omit from toc -->
 #### **Request Example**
 
@@ -502,6 +528,7 @@ The response is a JSON array and includes clinical data such as such as systolic
           "blood_oxygen_level": 96,
           "pulse_rate": 85
         }'
+
 <!-- omit from toc -->
 #### **Response Example**
 
@@ -518,26 +545,31 @@ The response is a JSON array and includes clinical data such as such as systolic
         "updatedAt": "2024-03-31T21:21:19.508Z",
         "__v": 0
     }
+
 <!-- omit from toc -->
 ##### NOTE: The *is_critical_condition* attribute is a boolean that automatically updates based on the latest clinical data. If any of the patient's vital signs is outside the normal range, *is_critical_condition* is set to **TRUE**.
 
 ### GET all critical patients
 
 `GET http://127.0.0.1:3000/patients`
+
 <!-- omit from toc -->
 #### **Description**
 
 This endpoint makes an HTTP GET request to retrieve a list of patients in critical condition.
 
 The *is_critical_condition* attribute is a boolean that automatically updates based on the latest clinical data. If any of the patient's vital sign is outside the normal range, *is_critical_condition* is set to **TRUE**. If a patient's *is_critical_condition* is TRUE, their record is included in the response.
+
 <!-- omit from toc -->
 #### **Response**
 
 Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
+
 <!-- omit from toc -->
 #### **Request Example**
 
 `curl --location 'http://127.0.0.1:3000/patients/critical'`
+
 <!-- omit from toc -->
 #### **Response Example**
 
