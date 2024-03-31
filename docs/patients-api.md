@@ -18,33 +18,137 @@ This documentation is intended for developers involved in building or maintainin
 - **Android Base URL**: `http://10.0.2.2:3000`
 
 ## Endpoints
-### Get all patients
+### GET all patients
 `GET http://127.0.0.1:3000/patients`
 
-**Description**: This endpoint makes an HTTP GET request to retrieve a list of patients. 
+#### **Description**: This endpoint makes an HTTP GET request to retrieve a list of patients. 
 
-**Response**: Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
+#### **Response**: Returns a list of all patients. The response will be a JSON array containing patient objects with attributes such as first name, last name, date of birth, contact information, and so on.
 
-**Request Example**:
+#### **Request Example**
 
     curl --location --request GET 'http://127.0.0.1:3000/patients
 
-**Response Example**:
+#### **Response Example**
 
     [
-    {
-        "_id": "65f382d7076a0b12026fdb6b",
-      "firstName": "Sam",
-      "lastName": "Rihan",
-      "dateOfBirth": "1999-01-12T00:00:00.000Z",
-      "age": 25,
-      "gender": "Female",
-      ...
+      {
+          "_id": "65f382d7076a0b12026fdb6b",
+        "firstName": "Sam",
+        "lastName": "Rihan",
+        "dateOfBirth": "1999-01-12T00:00:00.000Z",
+        "age": 25,
+        "gender": "Female",
+        ...
       },
-      ...
-      ]
+      {
+         "_id": "76f382d7076a0b12026fxc1f",
+        "firstName": "John",
+        "lastName": "Doe",
+        "dateOfBirth": "1980-01-12T00:00:00.000Z",
+        "age": 44,
+        "gender": "Male",
+        ...
+      },
+    ]
 
-#### GET /patients/:id
+### GET patient clinical data by patientId
+`GET http://127.0.0.1:3000/patients/{patientId}/clinicaldata`
+
+#### **Description**: This endpoint makes an HTTP GET request to retrieve clinical data of a patient based on the provided patientId. 
+
+#### **Response**: The response is a JSON array and inlcudes clinical data such as such as systolic and diastolic blood pressure, respiratory rate, blood oxygen level, pulse rate, patient ID, critical condition status.
+
+
+#### **Parameters**
+| Name      | In   | Required | Description | 
+| ---       | ---  | ------   |  ---         |
+| patientId | path | Yes     | Unique ID to use for this patient |
+
+
+#### **Request Example**
+
+    curl --location --request GET 'http://127.0.0.1:3000/patients/{patientId}/clinicaldata'
+
+#### **Response Example**
+
+    [
+      {
+        "_id": "66086a77cfee14a94eddfb86",
+        "bp_systolic": 120,
+        "bp_diastolic": 90,
+        "respiratory_rate": 20,
+        "blood_oxygen_level": 95,
+        "pulse_rate": 60,
+        "patientId": "65f4b15d732c8d4f8e3cd7ab",
+        "is_critical_condition": false,
+        "createdAt": "2024-03-30T19:39:35.930Z",
+        "updatedAt": "2024-03-30T19:39:35.930Z",
+        "__v": 0
+        
+      }      
+    ]
+
+##### NOTE: The attribute *is_critical_condition* is a boolean that automatically updates based on the latest clinical data. If any of the vital signs are above or below the normal levels, *is_critical_condition* is set to **TRUE**.
+
+
+### GET patient by patientId
+`GET http://127.0.0.1:3000/patients/{patientId}`
+
+#### **Description**: This endpoint makes an HTTP GET request to retrieve details of a patient based on the provided patientId. 
+
+#### **Response**: The response includes various attributes of the patient such as first name, last name, date of birth, contact information, critical status, and so on.
+
+#### **Parameters**
+| Name      | In   | Required | Description | 
+| ---       | ---  | ------   |  ---         |
+| patientId | path | Yes     | Unique ID to use for this patient |
+
+
+#### **Request Example**
+
+    curl --location --request GET 'http://127.0.0.1:3000/patients/65f4b15d732c8d4f8e3cd7ab'
+
+#### **Response Example**
+
+    [
+      {
+        "_id": "65f4b15d732c8d4f8e3cd7ab",
+        "firstName": "Sarah",
+        "lastName": "Johns",
+        "dateOfBirth": "1990-09-09T00:00:00.000Z",
+        "age": 34,
+        "gender": "Female",
+        "height": 145,
+        "weight": 45,
+        "address": "Address for Patient",
+        "city": "Toronto",
+        "province": "Ontario",
+        "postalCode": "M1Q 1V3",
+        "contactNumber": "1234567890",
+        "email": "123@dfas.ca",
+        "identification": "HEalth card",
+        "identificationType": "HealthCard",
+        "purposeOfVisit": "Asthma",
+        "primaryCarePhysician": "Some Doctor",
+        "physicianContactNumber": "1234567890",
+        "listOfAllergies": "Bees",
+        "currentMedications": "Ibuprofen",
+        "medicalConditions": "Diabetes",
+        "insuranceProvider": "Sun Life",
+        "insuranceIdNumber": "098765432d1",
+        "insuranceContactNumber": "0987654321",
+        "emergencyContactPerson": "Emely Amby",
+        "emergencyContactNumber": "1111111111",
+        "is_patient_critical": false,
+        "createdAt": "2024-03-15T20:36:45.973Z",
+        "updatedAt": "2024-03-30T16:22:02.654Z",
+        "__v": 0
+      }      
+    ]
+
+
+### GET /patients/:id
 - **Description**: Get a single patient by their patient ID.
 - **Parameters**:
   - `id`: The unique ID of the patient.
