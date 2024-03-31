@@ -65,6 +65,7 @@ Returns a list of all patients. The response will be a JSON array containing pat
 #### **Request Example**
 
     curl --location 'http://127.0.0.1:3000/patients
+
 <!-- omit from toc -->
 #### **Response Example**
 
