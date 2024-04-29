@@ -10,13 +10,16 @@ This portfolio is a collection of technical writing samples, coding projects, an
 
 The Patients API is a backend service developed to manage patient data and clinical records for the Patient Management mobile application.
 
-Built using Node.js for the backend logic and MongoDB as the database, this API integrates with the front-end, which is developed using React Native.
+Built using Node.js for the backend logic and MongoDB as the database, this API integrates with the front end, developed using React Native.
 
 # How-to Guides
 
-## Creating Customer Sentiment Analysis in Node RED (WIP)
+## [Cambodia National Single Window (CNSW) User Guide](https://nsw.gov.kh/pdf/publications/CNSW%20Trader%20User%20Guide%20v1.2.pdf)
+A user manual developed for the Cambodian National Single Window (CNSW), a web application portal designed for importers/exporters and agents to apply for licenses, permits, and certificates. The portal streamlines the processing of these applications by the relevant Cambodian government agency, all within the same platform. Click the link above to download the PDF copy.
 
-A guide that explains how to implement customer sentiment analysis using Node RED. This guide covers the integration of a sentiment analysis algorithm within Node RED to assign scores and analyze written feedback from customers, categorizing it as positive, neutral, or negative.
+## Creating Customer Sentiment Analysis in Node-RED (WIP)
+
+A guide that explains how to implement customer sentiment analysis using Node RED. This guide covers the integration of a sentiment analysis algorithm within Node-RED to assign scores and analyze written feedback from customers, categorizing it as positive, neutral, or negative.
 
 This resource is important for organizations aiming to analyze and understand their customers' sentiments.
 
