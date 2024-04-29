@@ -9,8 +9,7 @@ This portfolio is a collection of technical writing samples, coding projects, an
 ## [Patients API](/docs/patients-api.md)
 
 The Patients API is a backend service developed to manage patient data and clinical records for the Patient Management mobile application.
-
-Built using Node.js for the backend logic and MongoDB as the database, this API integrates with the front end, developed using React Native.
+Built using Node.js for the backend logic and MongoDB as the database, this API integrates with the front end, developed using React Native. Click the link above to view the API documentation.
 
 # How-to Guides
 
