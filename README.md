@@ -20,6 +20,7 @@ A user manual developed for the Cambodian National Single Window (CNSW), a web a
 
 The Major Incident Management SOP establishes a standard procedure for reporting, managing, and resolving major outages for a company. This SOP details the escalation process, from initial detection through automated alerts or customer-created high-priority tickets. The document emphasizes ITIL-based practices and clear triage requirements based on incident impact and severity. SLAs in the doc specify response and recovery time, including a post-mortem analysis that will be shared to the affected customers.
 
+Download the file here: [Major Incident Management SOP] (https://github.com/adrnmrk/Adrian-Portfolio/tree/d992f5fa823d73b9cf2674b926d89f446274520d/docs/)
 
 
 # Mobile Application Development
