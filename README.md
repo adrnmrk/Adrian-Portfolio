@@ -16,11 +16,11 @@ Built using Node.js for the backend logic and MongoDB as the database, this API 
 ## [Cambodia National Single Window (CNSW) User Guide](https://nsw.gov.kh/pdf/publications/CNSW%20Trader%20User%20Guide%20v1.2.pdf)
 A user manual developed for the Cambodian National Single Window (CNSW), a web application portal designed for importers/exporters and agents to apply for licenses, permits, and certificates. The portal streamlines the processing of these applications by the relevant Cambodian government agency, all within the same platform. Click the link above to download the PDF copy.
 
-## Creating Customer Sentiment Analysis in Node-RED (WIP)
+## Major Incident Management SOP
 
-A guide that explains how to implement customer sentiment analysis using Node RED. This guide covers the integration of a sentiment analysis algorithm within Node-RED to assign scores and analyze written feedback from customers, categorizing it as positive, neutral, or negative.
+The Major Incident Management SOP establishes a standard procedure for reporting, managing, and resolving major outages for a company. This SOP details the escalation process, from initial detection through automated alerts or customer-created high-priority tickets. The document emphasizes ITIL-based practices and clear triage requirements based on incident impact and severity. SLAs in the doc specify response and recovery time, including a post-mortem analysis that will be shared to the affected customers.
 
-This resource is important for organizations aiming to analyze and understand their customers' sentiments.
+
 
 # Mobile Application Development
 
